@@ -180,7 +180,7 @@ void operationsRun(int id, int clock_rate, vector<int>& peers, std::ofstream &lo
     // Random generator for operations selection (1-10)
     random_device rd;
     mt19937 gen(rd());
-    uniform_int_distribution<int> opDist(1, 5); // 1-10 standard, 1-5 low probability
+    uniform_int_distribution<int> opDist(1, 10); // 1-10 standard, 1-5 low probability
 
     // Calculate time duration per operation
     auto opDuration = duration<double>(1.0 / clock_rate);
@@ -401,7 +401,7 @@ int runProc(int id) {
     // Determine clock rate
     random_device rd;
     mt19937 gen(rd());
-    uniform_int_distribution<std::mt19937::result_type> dist6(1,3); //1-6 standard, 1-3 low variation
+    uniform_int_distribution<std::mt19937::result_type> dist6(1,20); //1-6 standard, 1-3 low variation, 1-20 extreme
 
     int clock_rate = dist6(gen);
     enterLog(logFile, "PID: " + to_string(id) + " | INITIALIZATION COMPLETE | CLOCK RATE = " + to_string(clock_rate));
